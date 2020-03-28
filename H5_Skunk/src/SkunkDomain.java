@@ -78,7 +78,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 					break;
 				}
-				else if (skunkDice.getDie1().getLastRoll() == 1 || skunkDice.getDie2().getLastRoll() == 1)
+				else if (getDie1Roll() || getDie2Roll())
 				{
 					ui.println("One Skunk! You lose the turn, the turn score, plus pay 1 chip to the kitty");
 					kitty += 1;
@@ -162,7 +162,7 @@ public class SkunkDomain
 					wantsToRoll = false;
 
 				}
-				else if (skunkDice.getDie1().getLastRoll() == 1 || skunkDice.getDie2().getLastRoll() == 1)
+				else if (getDie1Roll() || getDie2Roll())
 				{
 					ui.println("One Skunk! You lose the turn, the turn core, plus pay 1 chip to the kitty");
 					kitty += 1;
@@ -231,6 +231,14 @@ public class SkunkDomain
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private boolean getDie2Roll() {
+		return skunkDice.getDie2().getLastRoll() == 1;
+	}
+
+	private boolean getDie1Roll() {
+		return skunkDice.getDie1().getLastRoll() == 1;
 	}
 
 	public static void main(String[] args)
